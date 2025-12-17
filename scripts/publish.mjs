@@ -6,7 +6,7 @@ const isDryRun = Boolean(argv['dry-run'] ?? argv.dryRun ?? false)
 const otp = typeof argv.otp === 'string' ? argv.otp : null
 const IS_CI = process.env.CI === 'true'
 
-echo(chalk.blue('\n📦 Publishing try-result package...\n'))
+echo(chalk.blue('\n📦 Publishing result-try package...\n'))
 
 if (isDryRun) {
   echo(chalk.yellow('🔍 DRY RUN MODE - No actual publishing will occur\n'))

@@ -10,19 +10,19 @@ The second is the implicit failure path. At any moment, instead of returning a v
 
 You cannot determine what a function might throw simply by reading its definition. The type signature tells you what the function hopes to do, not what it will do. It is too easy to assume success and overlook the failure path.
 
-`try-result` captures the implicit failure path. It catches exceptions and converts them into a return value, forcing the caller to handle the result.
+`result-try` captures the implicit failure path. It catches exceptions and converts them into a return value, forcing the caller to handle the result.
 
 ## 2. Defensive Consistency
 
 It is better to handle an error at build time than to debug a crash in production.
 
-`try-result` shifts the burden of error handling to the safest possible moment: right now, by treating failures as required checks rather than optional catch blocks. This makes handling failure a natural, automatic part of the development process.
+`result-try` shifts the burden of error handling to the safest possible moment: right now, by treating failures as required checks rather than optional catch blocks. This makes handling failure a natural, automatic part of the development process.
 
 ## 3. Error Normalization & Introspection
 
 In TypeScript, caught exceptions are typed as `unknown`. You cannot know the shape or the type of the value you have caught.
 
-`try-result` eliminates this ambiguity.
+`result-try` eliminates this ambiguity.
 
 It uses a robust inspection strategy to safely serialize thrown values into readable strings, regardless of their original type or structure.
 
@@ -30,7 +30,7 @@ This means that your Failure object will always contain meaningful debug data.
 
 ## 4. Boundary-First Design
 
-`try-result` is built for the edges of your application.
+`result-try` is built for the edges of your application.
 
 It comes equipped with a comprehensive suite of standard error classes, from `BadRequestError` to `GatewayTimeoutError`, that mirror standard HTTP status codes.
 

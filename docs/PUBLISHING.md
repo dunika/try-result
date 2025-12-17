@@ -90,7 +90,7 @@ git push origin main --tags
 
 **Step 3: Monitor**
 
-[View workflow runs →](https://github.com/dunika/try-result/actions)
+[View workflow runs →](https://github.com/dunika/result-try/actions)
 
 ---
 
@@ -129,7 +129,7 @@ npm run test
 ### Version Already Published
 
 - Update version in `package.json`
-- Check published versions: [npmjs.com/package/try-result](https://www.npmjs.com/package/try-result)
+- Check published versions: [npmjs.com/package/result-try](https://www.npmjs.com/package/result-try)
 
 ---
 
