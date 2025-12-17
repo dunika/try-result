@@ -62,8 +62,6 @@ async function go() {
 }
 ```
 
----
-
 ## The Problem
 
 In TypeScript, **exceptions are invisible**.
@@ -91,8 +89,6 @@ And your app crashes in production.
 *Note*: This approach is often called [Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/).
 You stay on the "Success Track" until an error switches you to the "Failure Track", but the train never falls off the rails.
 
----
-
 ## Philosophy
 
 - **Explicit Control Flow** - Make the implicit failure path explicit
@@ -101,8 +97,6 @@ You stay on the "Success Track" until an error switches you to the "Failure Trac
 - **Boundary-First Design** - HTTP-friendly errors that travel seamlessly up the call stack
 
 [See docs/PHILOSOPHY.md for more details](docs/PHILOSOPHY.md)
-
----
 
 ## Usage
 
@@ -160,7 +154,7 @@ const [data, error] = tryResultSync(() => JSON.parse(userInput))
 
 Decorate your class methods to automatically catch errors and return `Result` types.
 
-> [!] Requires `"experimentalDecorators": true` in your `tsconfig.json`.
+**Note:** Requires `"experimentalDecorators": true` in your `tsconfig.json`.
 
 ```typescript
 import { TryResult, Result, NotFoundError } from "result-try"
@@ -183,10 +177,7 @@ class UserService {
   }
 }
 
----
 ```
-
----
 
 ## API Reference
 
@@ -269,13 +260,16 @@ We provide standard HTTP-friendly error classes out of the box:
 | `ServiceUnavailableError` | 503 | `SERVICE_UNAVAILABLE` |
 | `GatewayTimeoutError` | 504 | `GATEWAY_TIMEOUT` |
 
+
 You can access these definitions at runtime via `HTTP_ERRORS`.
 
 ### Static Factory Methods
 
 All built-in error classes provide two static factory methods for convenient error creation:
 
-**`from()`** - Creates an error instance from a message or existing error:
+**`from()`**
+
+Creates an error instance from a message or existing error:
 
 ```typescript
 import { ResultError, NotFoundError } from "result-try"
@@ -291,7 +285,9 @@ try {
 }
 ```
 
-**`result()`** - Creates an error `Result` directly (shorthand for `Result.error(ErrorClass.from(...))`):
+**`result()`** 
+
+Creates an error `Result` directly (shorthand for `Result.error(ErrorClass.from(...))`):
 
 ```typescript
 import { NotFoundError } from "result-try"
