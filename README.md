@@ -82,16 +82,11 @@ And your app crashes in production.
 2.  **Catches** every exception and converts it into a `Result` object.
 3.  **Forces** you to handle the failure case before accessing the data.
 
-```mermaid
-graph LR
-    A[Function Call] --> B{Exceptions?}
-    B -- Yes --> C[Catch Error]
-    C --> D[Result.error]
-    B -- No --> E[Return Value]
-    E --> F[Result.ok]
-    D --> G[Unified Result]
-    F --> G
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/railway-diagram.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/railway-diagram.png">
+  <img alt="Railway Oriented Programming Flow" src="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/railway-diagram.png">
+</picture>
 
 *Note*: This approach is often called [Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/).
 You stay on the "Success Track" until an error switches you to the "Failure Track", but the train never falls off the rails.
