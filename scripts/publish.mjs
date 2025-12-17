@@ -3,6 +3,7 @@ import 'zx/globals'
 
 // Parse command line arguments
 const isDryRun = Boolean(argv['dry-run'] ?? argv.dryRun ?? false)
+const otp = typeof argv.otp === 'string' ? argv.otp : null
 const IS_CI = process.env.CI === 'true'
 
 echo(chalk.blue('\n📦 Publishing try-result package...\n'))
@@ -81,6 +82,10 @@ if (!isDryRun) {
   
   if (IS_CI) {
     publishArgs.push('--provenance')
+  }
+  
+  if (otp) {
+    publishArgs.push('--otp', otp)
   }
   
   await $`npm ${publishArgs}`

@@ -49,6 +49,25 @@ The script will:
 4. Run tests
 5. Publish to npm with `--access public`
 
+**Two-Factor Authentication (2FA)**
+
+npm requires 2FA for publishing packages. The process depends on your 2FA method:
+
+**Security Key (YubiKey, etc.)**
+```bash
+npm run publish
+```
+npm will prompt you to tap your security key during the publish process. No additional flags needed.
+
+**Authenticator App (Google Authenticator, Authy, etc.)**
+```bash
+npm run publish -- --otp=123456
+```
+Replace `123456` with the 6-digit code from your authenticator app.
+
+> [!NOTE]
+> If you don't have 2FA enabled yet, run `npm profile enable-2fa auth-and-writes` to set it up.
+
 ---
 
 ## CI/CD Publishing
@@ -86,6 +105,18 @@ git push origin main --tags
 
 **CI:**
 - Set `NPM_TOKEN` secret in: Repository → Settings → Secrets and variables → Actions
+
+### Two-Factor Authentication Required
+
+If you see: `Two-factor authentication or granular access token with bypass 2fa enabled is required to publish packages`
+
+**Solution:** Use the `--otp` flag with your authenticator code:
+```bash
+npm run publish -- --otp=123456
+```
+
+> [!IMPORTANT]
+> Don't create a token with "bypass 2FA" - it's less secure. Just use the OTP code from your authenticator app.
 
 ### Build/Lint/Test Failures
 
