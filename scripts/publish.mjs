@@ -92,8 +92,19 @@ if (!isDryRun) {
     publishArgs.push('--otp', otp)
   }
   
-  await $`npm ${publishArgs}`
-  echo(chalk.green('\n✓ Package published successfully! 🎉\n'))
+  try {
+    await $`npm ${publishArgs}`
+    echo(chalk.green('\n✓ Package published successfully! 🎉\n'))
+  } catch (error) {
+    echo(chalk.red('\n✗ Publish command threw an error:'))
+    echo(error)
+    // If the error exit code is present, log it
+    if (error.exitCode) {
+      echo(chalk.red(`Exit code: ${error.exitCode}`))
+    }
+    // Propagate failure unless we decide to ignore it
+    process.exit(1)
+  }
 } else {
   echo(chalk.yellow('⊘ Skipped (dry-run)\n'))
   echo(chalk.blue('\nDry run completed. Run without --dry-run to actually publish.\n'))
