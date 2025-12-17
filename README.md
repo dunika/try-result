@@ -83,9 +83,9 @@ And your app crashes in production.
 3.  **Forces** you to handle the failure case before accessing the data.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/railway-diagram.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/railway-diagram.png">
-  <img alt="Railway Oriented Programming Flow" src="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/railway-diagram.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/diagram.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/diagram.png">
+  <img alt="Railway Oriented Programming Flow" src="https://raw.githubusercontent.com/dunika/result-try/main/docs/images/diagram.png">
 </picture>
 
 *Note*: This approach is often called [Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/).
