@@ -64,7 +64,7 @@ async function go() {
 
 ## The Problem
 
-In TypeScript, **exceptions are invisible**.
+Even with TypeScript, **exceptions are invisible**.
 1. **You don't know if a function throws.**
 The type signature tells you what it returns, *not* what breaks it.
 2. **You don't know what it throws.**
